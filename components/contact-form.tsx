@@ -15,15 +15,67 @@ export function ContactForm() {
     email: "",
     message: "",
   })
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log("Form submitted:", formData)
+    setStatus("loading")
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "9f24028e-dc0b-4bd2-9098-8ffcba7ab84f", //
+          subject: "🧘 New Meditation Retreat Inquiry",
+          from_name: "Boror Retreat Website",
+          name: formData.name,
+          phone: formData.phone,
+          email: formData.email,
+          message: formData.message || "No message provided",
+        }),
+      })
+
+      const result = await response.json()
+
+      if (result.success) {
+        setStatus("success")
+        setFormData({ name: "", phone: "", email: "", message: "" })
+      } else {
+        setStatus("error")
+      }
+    } catch (error) {
+      setStatus("error")
+    }
+  }
+
+  if (status === "success") {
+    return (
+      <section className="py-24 px-4">
+        <div className="max-w-3xl mx-auto">
+          <Card className="p-12 text-center">
+            <div className="text-6xl mb-6">🙏</div>
+            <h2 className="text-3xl font-serif mb-4">Thank You</h2>
+            <p className="text-lg text-muted-foreground mb-8">
+              Your inquiry has been received. We will contact you within 24 hours with detailed information about the retreat.
+            </p>
+            <Button 
+              variant="outline" 
+              onClick={() => setStatus("idle")}
+              className="rounded-full"
+            >
+              Submit Another Inquiry
+            </Button>
+          </Card>
+        </div>
+      </section>
+    )
   }
 
   return (
-    <section className="py-24 px-4">
+    <section id="contact" className="py-24 px-4">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-serif mb-4 text-balance">Begin Your Journey</h2>
@@ -95,9 +147,20 @@ export function ContactForm() {
               />
             </div>
 
-            <Button type="submit" size="lg" className="w-full h-12 text-base rounded-full">
-              Submit Inquiry
+            <Button 
+              type="submit" 
+              size="lg" 
+              className="w-full h-12 text-base rounded-full"
+              disabled={status === "loading"}
+            >
+              {status === "loading" ? "Submitting..." : "Submit Inquiry"}
             </Button>
+
+            {status === "error" && (
+              <p className="text-sm text-red-500 text-center">
+                Something went wrong. Please try again or email us directly.
+              </p>
+            )}
 
             <p className="text-sm text-muted-foreground text-center">
               After submitting, we will contact you within 24 hours with detailed information about the retreat
