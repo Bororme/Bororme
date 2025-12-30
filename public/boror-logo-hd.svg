@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 120" width="800" height="240">
+  <!-- Background -->
+  <rect width="400" height="120" fill="white"/>
+  
+  <!-- Arc Symbol -->
+  <g transform="translate(50, 60)">
+    <!-- Outer arc -->
+    <path d="M -30 15 Q -30 -30 0 -30 Q 30 -30 30 15" 
+          fill="none" 
+          stroke="#0d9488" 
+          stroke-width="4" 
+          stroke-linecap="round"/>
+    <!-- Middle arc -->
+    <path d="M -20 15 Q -20 -18 0 -18 Q 20 -18 20 15" 
+          fill="none" 
+          stroke="#0d9488" 
+          stroke-width="4" 
+          stroke-linecap="round"/>
+    <!-- Inner arc -->
+    <path d="M -10 15 Q -10 -6 0 -6 Q 10 -6 10 15" 
+          fill="none" 
+          stroke="#0d9488" 
+          stroke-width="4" 
+          stroke-linecap="round"/>
+    <!-- Center dot -->
+    <circle cx="0" cy="20" r="5" fill="#0d9488"/>
+  </g>
+  
+  <!-- Boror Text -->
+  <text x="100" y="72" 
+        font-family="Georgia, Times New Roman, serif" 
+        font-size="48" 
+        font-weight="400"
+        fill="#1e293b"
+        letter-spacing="2">Boror</text>
+</svg>
