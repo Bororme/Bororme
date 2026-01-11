@@ -60,6 +60,12 @@ export function Hero() {
         <Logo />
       </div>
 
+      <div className="absolute top-8 right-8 z-20">
+        <Button variant="ghost" asChild className="text-white hover:bg-white/20 hover:text-white">
+          <a href="/blog">Blog</a>
+        </Button>
+      </div>
+
       {/* Animated background images with crossfade */}
       <div className="absolute inset-0 -z-10">
         {heroImages.map((image, index) => (
@@ -154,11 +160,10 @@ export function Hero() {
               aria-label={`View image ${index + 1}`}
             >
               <div
-                className={`w-2 h-2 rounded-full transition-all duration-500 ${
-                  index === currentImageIndex
+                className={`w-2 h-2 rounded-full transition-all duration-500 ${index === currentImageIndex
                     ? "bg-accent w-8 shadow-[0_0_8px_rgba(139,69,19,0.6)]"
                     : "bg-muted-foreground/30 group-hover:bg-muted-foreground/60"
-                }`}
+                  }`}
               />
             </button>
           ))}

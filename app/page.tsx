@@ -6,6 +6,7 @@ import { Pricing } from "@/components/pricing"
 import { FAQ } from "@/components/faq"
 import { ContactForm } from "@/components/contact-form"
 import { Footer } from "@/components/footer"
+import { RecentArticles } from "@/components/recent-articles"
 
 export default function Page() {
   return (
@@ -14,6 +15,7 @@ export default function Page() {
       <Benefits />
       <Experience />
       <Practices />
+      <RecentArticles />
       <Pricing />
       <FAQ />
       <ContactForm />

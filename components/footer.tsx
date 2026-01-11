@@ -14,10 +14,13 @@ export function Footer() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-lg font-semibold">Contact</h3>
+            <h3 className="text-lg font-semibold">Contact & Links</h3>
             <div className="space-y-2 text-sm text-muted-foreground">
               <p>Available: Daily 9:00 AM - 6:00 PM</p>
               <p>Email: contact@boror.me</p>
+              <p className="pt-2">
+                <a href="/blog" className="hover:text-primary transition-colors underline underline-offset-4">Read our Blog</a>
+              </p>
             </div>
           </div>
 
